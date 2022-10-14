@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { AppBlankComponent } from './layouts/blank/blank.component';
-import { AuthGuard } from './shared/auth.guard';
 
 export const AppRoutes: Routes = [
     {

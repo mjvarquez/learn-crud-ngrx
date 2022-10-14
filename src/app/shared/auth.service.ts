@@ -55,6 +55,6 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logOut();
       this.router.navigate(['authentication/login'])
-    }, 6000)
+    }, 600000)
   }
 }
