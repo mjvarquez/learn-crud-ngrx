@@ -17,14 +17,14 @@
               <mat-form-field>
                 <input
                   matInput
-                  placeholder="Username"
+                  placeholder="Email"
                   [formControl]="form.controls['email']"
                 />
               </mat-form-field>
               <small
                 *ngIf="
                   form.controls['email'].hasError('required') &&
-                  form.controls['uname'].touched
+                  form.controls['email'].touched
                 "
                 class="text-danger support-text"
                 >Email is required.</small

@@ -1,14 +1,27 @@
 import { Component } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/shared/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-horizontal-header',
   templateUrl: './horizontal-header.component.html',
   styleUrls: []
 })
 export class HorizontalAppHeaderComponent {
+  
   public config: PerfectScrollbarConfigInterface = {};
 
+  constructor(private translate: TranslateService, 
+              private authService: AuthService) {
+    translate.setDefaultLang('en');
+  }
+
+  onLogout(){
+    console.log("click!")
+    this.authService.logOut()
+  }
 
   // This is for Notifications
   notifications: Object[] = [
@@ -103,14 +116,12 @@ export class HorizontalAppHeaderComponent {
     icon: 'de'
   }]
 
-
-
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
-  }
-
   changeLanguage(lang: any) {
     this.translate.use(lang.code)
     this.selectedLanguage = lang;
+  }
+
+  ngOnInit(): void {
+    this.authService.autoLogout()
   }
 }
